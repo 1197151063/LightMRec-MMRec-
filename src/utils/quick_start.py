@@ -93,6 +93,8 @@ def quick_start(model, dataset, config_dict, save_model=True, mg=False):
         logger.info('████Current BEST████:\nParameters: {}={},\n'
                     'Valid: {},\nTest: {}\n\n\n'.format(config['hyper_parameters'],
             hyper_ret[best_test_idx][0], dict2str(hyper_ret[best_test_idx][1]), dict2str(hyper_ret[best_test_idx][2])))
+        
+        break
 
     # log info
     logger.info('\n============All Over=====================')

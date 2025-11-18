@@ -4,7 +4,7 @@ use_gpu: True
 seed: [999]
 
 # multi-modal raw features
-data_path: '../data/'
+data_path: '../../LightMMRec/data/'
 inter_splitting_label: 'x_label'
 filter_out_cod_start_users: True
 is_multimodal_model: True
@@ -28,7 +28,7 @@ learning_rate_scheduler: [1.0, 50]
 eval_step: 1
 
 training_neg_sample_num: 1
-use_neg_sampling: True
+use_neg_sampling: False
 use_full_sampling: False
 NEG_PREFIX: neg__
 
@@ -39,8 +39,8 @@ field_separator: "\t"
 
 
 # evaluation settings
-metrics: ["Recall", "NDCG", "Precision", "MAP"]
-topk: [5, 10, 20, 50]
+metrics: ["Recall", "NDCG"]
+topk: [10, 20]
 valid_metric: Recall@20
 eval_batch_size: 4096
 

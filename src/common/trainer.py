@@ -204,7 +204,7 @@ class Trainer(AbstractTrainer):
             dict: valid result
         """
         valid_result = self.evaluate(valid_data)
-        valid_score = valid_result[self.valid_metric] if self.valid_metric else valid_result['NDCG@20']
+        valid_score = valid_result['recall@20'] + valid_result['ndcg@20']
         return valid_score, valid_result
 
     def _check_nan(self, loss):
