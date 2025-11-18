@@ -1,0 +1,163 @@
+Tue 18 Nov 2025 03:17:54 INFO ██Server: 	dev
+Tue 18 Nov 2025 03:17:54 INFO ██Dir: 	/home/lhb/cyj/MMRec/src
+
+Tue 18 Nov 2025 03:17:54 INFO 
+gpu_id=0
+use_gpu=True
+seed=[999]
+data_path=../../LightMMRec/data/
+inter_splitting_label=x_label
+filter_out_cod_start_users=True
+is_multimodal_model=True
+checkpoint_dir=saved
+save_recommended_topk=True
+recommend_topk=recommend_topk/
+embedding_size=64
+weight_decay=0.0
+req_training=True
+epochs=1000
+stopping_step=20
+train_batch_size=2048
+learner=adam
+learning_rate=0.001
+learning_rate_scheduler=[1.0, 50]
+eval_step=1
+training_neg_sample_num=1
+use_neg_sampling=False
+use_full_sampling=False
+NEG_PREFIX=neg__
+USER_ID_FIELD=userID
+ITEM_ID_FIELD=itemID
+TIME_FIELD=timestamp
+field_separator=	
+metrics=['Recall', 'NDCG']
+topk=[10, 20]
+valid_metric=Recall@20
+eval_batch_size=4096
+use_raw_features=False
+max_txt_len=32
+max_img_size=256
+vocab_size=30522
+type_vocab_size=2
+hidden_size=4
+pad_token_id=0
+max_position_embeddings=512
+layer_norm_eps=1e-12
+hidden_dropout_prob=0.1
+end2end=False
+hyper_parameters=['seed']
+inter_file_name=baby.inter
+vision_feature_file=image_feat.npy
+text_feature_file=text_feat.npy
+user_graph_dict_file=user_graph_dict.npy
+alpha=0.4
+tau=0.04
+model=LightMRec
+dataset=baby
+valid_metric_bigger=True
+device=cuda
+
+
+Tue 18 Nov 2025 03:17:54 INFO baby
+The number of users: 19445
+Average actions of users: 8.269066598097197
+The number of items: 7050
+Average actions of items: 22.807375886524824
+The number of inters: 160792
+The sparsity of the dataset: 99.8827082752043%
+Tue 18 Nov 2025 03:17:54 INFO 
+====Training====
+baby
+The number of users: 19445
+Average actions of users: 6.096734379017742
+The number of items: 7047
+Average actions of items: 16.82290336313325
+The number of inters: 118551
+The sparsity of the dataset: 99.9134846831415%
+Tue 18 Nov 2025 03:17:54 INFO 
+====Validation====
+baby
+The number of users: 19445
+Average actions of users: 1.0572897917202366
+The number of items: 5483
+Average actions of items: 3.749589640707642
+The number of inters: 20559
+The sparsity of the dataset: 99.98071694707788%
+Tue 18 Nov 2025 03:17:54 INFO 
+====Testing====
+baby
+The number of users: 19445
+Average actions of users: 1.1150424273592183
+The number of items: 5549
+Average actions of items: 3.907370697422959
+The number of inters: 21682
+The sparsity of the dataset: 99.97990552482683%
+Tue 18 Nov 2025 03:17:58 INFO 
+
+=================================
+
+
+Tue 18 Nov 2025 03:17:58 INFO =========1/1: Parameters:['seed']=(999,)=======
+Tue 18 Nov 2025 03:17:58 INFO LightMRec(
+  (i_pe): PositionalEncoding()
+  (u_pe): PositionalEncoding()
+  (user_embedding): Embedding(19445, 64)
+  (image_embedding): Embedding(7050, 4096)
+  (text_embedding): Embedding(7050, 384)
+  (image_trs): MLP(
+    (mlp): Sequential(
+      (0): Linear(in_features=4096, out_features=256, bias=True)
+      (1): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Dropout(p=0.1, inplace=False)
+      (4): Linear(in_features=256, out_features=128, bias=True)
+      (5): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (6): ReLU()
+      (7): Dropout(p=0.1, inplace=False)
+      (8): Linear(in_features=128, out_features=64, bias=True)
+    )
+  )
+  (text_trs): MLP(
+    (mlp): Sequential(
+      (0): Linear(in_features=384, out_features=256, bias=True)
+      (1): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Dropout(p=0.1, inplace=False)
+      (4): Linear(in_features=256, out_features=128, bias=True)
+      (5): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (6): ReLU()
+      (7): Dropout(p=0.1, inplace=False)
+      (8): Linear(in_features=128, out_features=64, bias=True)
+    )
+  )
+)
+Trainable parameters: 34059712
+Tue 18 Nov 2025 03:18:04 INFO epoch 0 training [time: 5.60s, train loss: 267.3047]
+Tue 18 Nov 2025 03:18:06 INFO epoch 0 evaluating [time: 1.09s, valid_score: 0.041000]
+Tue 18 Nov 2025 03:18:06 INFO valid result: 
+recall@10: 0.0186    recall@20: 0.0281    ndcg@10: 0.0105    ndcg@20: 0.0129    
+Tue 18 Nov 2025 03:18:06 INFO test result: 
+recall@10: 0.0168    recall@20: 0.0266    ndcg@10: 0.0093    ndcg@20: 0.0117    
+Tue 18 Nov 2025 03:18:06 INFO ██ LightMRec--Best validation results updated!!!
+Tue 18 Nov 2025 03:18:11 INFO epoch 1 training [time: 4.80s, train loss: 170.6009]
+Tue 18 Nov 2025 03:18:13 INFO epoch 1 evaluating [time: 1.09s, valid_score: 0.099700]
+Tue 18 Nov 2025 03:18:13 INFO valid result: 
+recall@10: 0.0462    recall@20: 0.0680    ndcg@10: 0.0262    ndcg@20: 0.0317    
+Tue 18 Nov 2025 03:18:13 INFO test result: 
+recall@10: 0.0426    recall@20: 0.0644    ndcg@10: 0.0238    ndcg@20: 0.0294    
+Tue 18 Nov 2025 03:18:13 INFO ██ LightMRec--Best validation results updated!!!
+Tue 18 Nov 2025 03:18:18 INFO epoch 2 training [time: 4.80s, train loss: 148.2756]
+Tue 18 Nov 2025 03:18:20 INFO epoch 2 evaluating [time: 1.09s, valid_score: 0.125200]
+Tue 18 Nov 2025 03:18:20 INFO valid result: 
+recall@10: 0.0610    recall@20: 0.0811    ndcg@10: 0.0390    ndcg@20: 0.0441    
+Tue 18 Nov 2025 03:18:20 INFO test result: 
+recall@10: 0.0581    recall@20: 0.0798    ndcg@10: 0.0366    ndcg@20: 0.0422    
+Tue 18 Nov 2025 03:18:20 INFO ██ LightMRec--Best validation results updated!!!
+Tue 18 Nov 2025 03:18:25 INFO epoch 3 training [time: 4.83s, train loss: 133.3104]
+Tue 18 Nov 2025 03:18:27 INFO epoch 3 evaluating [time: 1.09s, valid_score: 0.147800]
+Tue 18 Nov 2025 03:18:27 INFO valid result: 
+recall@10: 0.0712    recall@20: 0.0915    ndcg@10: 0.0511    ndcg@20: 0.0563    
+Tue 18 Nov 2025 03:18:27 INFO test result: 
+recall@10: 0.0721    recall@20: 0.0912    ndcg@10: 0.0496    ndcg@20: 0.0545    
+Tue 18 Nov 2025 03:18:27 INFO ██ LightMRec--Best validation results updated!!!
+Tue 18 Nov 2025 03:18:32 INFO epoch 4 training [time: 4.80s, train loss: 119.1702]
